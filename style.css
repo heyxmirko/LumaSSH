@@ -1,0 +1,252 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #949AA8;
+}
+
+#app {
+  background-color: #2D313C;
+  height: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #3b414d;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-bar {
+  width: 100%;
+  height: 35px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding-left: 35px;
+  padding-right: 10px;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 500;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.search-bar:focus {
+  border: 1px solid var(--text-color);
+}
+
+.search-bar::placeholder {
+  color: var(--primary-color);
+}
+
+.titlebar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  user-select: none;
+  background-color: #1C1D22;
+}
+
+.titlebar .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.titlebar .logo img{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+.titlebar .logo span {
+  font-weight: 700;
+}
+
+.titlebar-btn {
+  padding: 5px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#titlebar-add-btn {
+  font-size: 20px;
+}
+#titlebar-add-btn:hover {
+  background-color: var(--border-color);
+}
+
+.titlebar-right-btns {
+  display: flex;
+}
+
+
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sidebar-container {
+  background-color: #282C37;
+  width: 200px;
+  height: 100vh;
+}
+
+.sidebar-title {
+  margin: 20px 10px;
+}
+
+.sidebar-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 170px;
+  margin: auto;
+}
+
+.sidebar-container form input {
+  background-color: #1C1D22;
+  width: 160px;
+  padding-left: 10px;
+  outline:none;
+  height: 35px;
+  border: #2D313C 1px solid;
+  color: #FAFAFA;
+  font-weight: 600;
+}
+
+.sidebar-container form input:focus {
+  border: #519EEB 1px solid;
+}
+
+.sidebar-container form input[type="submit"] {
+  background-color: #519EEB;
+  color: #FAFAFA;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sidebar-container form input[type="submit"]:hover {
+  filter: brightness(0.90);
+}
+
+.main-container {
+  width: 575px;
+  height: 100vh;
+  margin: auto;
+}
+
+.connections {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto auto;
+  row-gap: 27.5px;
+  justify-items: start;
+}
+
+.connection {
+  cursor: pointer;
+  background-color: #282C37;
+  height: 70px;
+  width: 230px;
+  padding: 10px 15px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px, rgba(0, 0, 0, 0.15) 0px 2px 6px 2px;
+}
+
+.connection-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FAFAFA;
+}
+.connection:hover {
+  filter: brightness(0.95);
+}
+
+.connection-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 20px;
+  margin-top: 8px;
+}
+
+.connection-details .user, .connection-details .host {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+
+
+
+.version {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 5px 15px;
+  font-size: 12px;
+  opacity: 0.25;
+}
+
+.context-menu {
+    position: absolute;
+    background-color: #1C1D22;
+    z-index: 1000;
+}
+
+.context-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.context-menu li {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #FAFAFA;
+}
+
+.context-menu li:hover {
+    background-color: #eb5151;
+}

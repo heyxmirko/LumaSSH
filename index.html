@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri App</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="main.js" defer></script>
+  </head>
+
+  <body oncontextmenu="return false">
+    <div id="app">
+
+      <div class="titlebar" data-tauri-drag-region>
+        <div class="logo">
+          <img src="assets/luma_logo.png">
+          <span>LumaSSH</span>
+        </div>
+        <div class="titlebar-right-btns">
+          <span class="titlebar-btn" id="close-btn">✕</span>
+        </div>
+      </div>
+      
+      
+      <div class="main-content">
+        <div class="sidebar-container">
+          <h3 class="sidebar-title">Add connection</h3>
+          <form id="add-connection-form" autocomplete="off">
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="host" placeholder="Host">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Add">
+          </form>
+        </div>
+        <div class="main-container">
+          <div class="connections">
+              <span class="connection-name">Loading connections...</span>
+          </div>
+        </div>
+      </div>
+      
+
+      <div id="context-menu" class="context-menu" style="display: none;">
+          <ul>
+              <li id="delete-connection">Delete</li>
+          </ul>
+      </div>
+      <small class="version" >v1.0.0</small>
+      
+    </div>
+  </body>
+</html>
