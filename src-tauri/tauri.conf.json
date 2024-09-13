@@ -67,7 +67,8 @@
         "resizable": false,
         "decorations": false,
         "transparent": true,
-        "title": "LumaSSH"
+        "title": "LumaSSH",
+        "center": true
       }
     ]
   }

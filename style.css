@@ -250,3 +250,11 @@ body {
 .context-menu li:hover {
     background-color: #eb5151;
 }
+
+
+
+
+
+#terminal, .xterm-viewport {
+  overflow: hidden;
+}

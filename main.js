@@ -1,5 +1,6 @@
 import { appWindow } from '@tauri-apps/api/window';
 import { invoke } from '@tauri-apps/api';
+import { WebviewWindow } from '@tauri-apps/api/window';
 
 async function addConnection(name, host, username, password) {
   try {
@@ -70,6 +71,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     connectionDiv.className = 'connection';
     connectionDiv.oncontextmenu = (e) => showContextMenu(e, id);
     connectionDiv.onclick = () => {
+      createTerminalWindow(host, username, password)
     }
     connectionDiv.innerHTML = `
       <span class="connection-name">${name}</span>
@@ -86,17 +88,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     `;
     return connectionDiv;
   }
-
-  function openTerminal(host, username) {
-    const command = `xterm -e ssh ${username}@${host}`;
-    const { exec } = require('child_process');
-    exec(command, (error) => {
-        if (error) {
-            console.error(`Error opening terminal: ${error.message}`);
-        }
-    });
-}
-
   
   let selectedConnectionId;
   function showContextMenu(e, connectionId) {
@@ -120,6 +111,18 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   // Load and display connections when the app starts
   await loadAndDisplayConnections();
+
+
+  function createTerminalWindow(host, username, password) {
+    const terminalWindow = new WebviewWindow("lumassh_terminal", {
+      url: 'terminal.html',
+      decorations: false,
+      transparent: true,
+      center: true,
+      width: 800,
+      height: 480
+    });
+  }
 });
 
 
