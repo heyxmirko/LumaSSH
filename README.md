@@ -1,4 +1,4 @@
-# LumaSSH
+# ✨LumaSSH
 
 ![LumaSSH](https://i.imgur.com/WdmTNsV.png)
 
