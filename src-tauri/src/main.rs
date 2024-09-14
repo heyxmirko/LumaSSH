@@ -27,24 +27,7 @@ fn add_connection(conn: &Connection, name: &str, host: &str, username: &str, pas
     Ok(())
 }
 
-fn get_connections(conn: &Connection) -> Result<Vec<(i32, String, String, String)>> {
-    let mut stmt = conn.prepare("SELECT id, name, host, username FROM connections ORDER BY id DESC")?;
-    let connections_iter = stmt.query_map([], |row| {
-        Ok((
-            row.get(0)?,
-            row.get(1)?,
-            row.get(2)?,
-            row.get(3)?,
-        ))
-    })?;
-    let mut connections = Vec::new();
-    for connection in connections_iter {
-        connections.push(connection?);  // Convert rusqlite::Error to anyhow::Error
-    }
-    Ok(connections)
-}
-
-fn get_connection(conn: &Connection) -> Result<Vec<(i32, String, String, String, String)>> {
+fn get_connections(conn: &Connection) -> Result<Vec<(i32, String, String, String, String)>> {
     let mut stmt = conn.prepare("SELECT id, name, host, username, password FROM connections ORDER BY id DESC")?;
     let connections_iter = stmt.query_map([], |row| {
         Ok((
@@ -63,8 +46,6 @@ fn get_connection(conn: &Connection) -> Result<Vec<(i32, String, String, String,
 }
 
 
-
-
 #[tauri::command]
 fn add_connection_command(name: String, host: String, username: String, password: String) -> Result<(), String> {
     let conn = initialize_db().map_err(|e| e.to_string())?;
@@ -73,16 +54,9 @@ fn add_connection_command(name: String, host: String, username: String, password
 }
 
 #[tauri::command]
-fn get_connections_command() -> Result<Vec<(i32, String, String, String)>, String> {
+fn get_connections_command() -> Result<Vec<(i32, String, String, String, String)>, String> {
     let conn = initialize_db().map_err(|e| e.to_string())?;
     let connections = get_connections(&conn).map_err(|e| e.to_string())?;
-    Ok(connections)
-}
-
-#[tauri::command]
-fn get_connection_command() -> Result<Vec<(i32, String, String, String, String)>, String> {
-    let conn = initialize_db().map_err(|e| e.to_string())?;
-    let connections = get_connection(&conn).map_err(|e| e.to_string())?;
     Ok(connections)
 }
 
@@ -97,7 +71,7 @@ fn delete_connection_command(id: i32) -> Result<(), String> {
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![add_connection_command, get_connections_command, get_connection_command, delete_connection_command])
+        .invoke_handler(tauri::generate_handler![add_connection_command, get_connections_command, delete_connection_command])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

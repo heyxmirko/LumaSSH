@@ -66,7 +66,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   function createConnectionElement(connection) {
-    const [id, name, host, username] = connection;
+    const [id, name, host, username, password] = connection;
     const connectionDiv = document.createElement('div');
     connectionDiv.className = 'connection';
     connectionDiv.oncontextmenu = (e) => showContextMenu(e, id);
