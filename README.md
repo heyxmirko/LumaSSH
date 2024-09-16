@@ -1,5 +1,8 @@
 # ✨LumaSSH
 
+> [!WARNING]
+> This app currently **does not yet include any encryption** for storing SSH connection details (e.g., usernames, passwords, and hosts). Use at your own risk. If you would like to add encryption, feel free to contribute and submit a pull request!
+
 ![LumaSSH](https://i.imgur.com/WdmTNsV.png)
 
 **LumaSSH** is a lightweight and minimalistic SSH manager designed to simplify your SSH connection experience. Manage multiple connections, save credentials securely, and connect to servers with ease—all from a clean, fast interface.
