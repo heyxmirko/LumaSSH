@@ -71,7 +71,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     connectionDiv.className = 'connection';
     connectionDiv.oncontextmenu = (e) => showContextMenu(e, id);
     connectionDiv.onclick = () => {
-      createTerminalWindow(host, username, password)
+      createTerminalWindow(id, name)
     }
     connectionDiv.innerHTML = `
       <span class="connection-name">${name}</span>
@@ -113,14 +113,15 @@ window.addEventListener("DOMContentLoaded", async () => {
   await loadAndDisplayConnections();
 
 
-  function createTerminalWindow(host, username, password) {
+  function createTerminalWindow(id, name) {
     const terminalWindow = new WebviewWindow("lumassh_terminal", {
-      url: 'terminal.html',
+      url: `terminal.html?id=${id}`,
       decorations: false,
       transparent: true,
       center: true,
       width: 800,
-      height: 480
+      height: 480,
+      title: name
     });
   }
 });

@@ -253,8 +253,12 @@ body {
 
 
 
-
+.terminal-container {
+  background-color: #2D313C;
+}
 
 #terminal, .xterm-viewport {
   overflow: hidden;
+  padding: 10px;
 }
+
