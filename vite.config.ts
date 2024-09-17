@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import { copy } from 'vite-plugin-copy'
 
 export default defineConfig({
   clearScreen: false,
@@ -18,14 +17,5 @@ export default defineConfig({
         terminal: resolve(__dirname, 'terminal.html'),
       }
     }
-  },
-  plugins: [
-    copy({
-      targets: [
-        { src: 'terminal.js', dest: 'dist' },
-        { src: 'assets/*', dest: 'dist/assets' }
-      ],
-      hook: 'writeBundle',
-    })
-  ]
+  }
 })
